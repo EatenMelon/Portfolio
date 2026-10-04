@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignace Deuwlf | Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 20px 0;
+        }
+
+        nav {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            font-size: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #7c5cff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            padding: 90px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #7c5cff;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about p {
+            max-width: 700px;
+            color: #555;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: #eee;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .project img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project h3 {
+            margin-bottom: 8px;
+        }
+
+        .project p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .project-info {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .project a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #7c5cff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .contact {
+            background: #222;
+            color: white;
+        }
+
+        .contact p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .contact a {
+            color: #9b87ff;
+        }
+
+        footer {
+            background: #222;
+            border-top: 1px solid #444;
+            color: #999;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: block;
+            }
+
+            nav div {
+                margin-top: 10px;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <nav>
+            <h2>Ignace Dewulf</h2>
+
+            <div>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about" class="about">
+        <div class="container">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello, I am Ignace Dewulf! I'm currently studying Digital Arts and Entertainment,
+				in the major Game Development at Howest.
+				I love programming in C++, making and designing systems mainly for games. 
+				In my free time, I also like to tinker and toy around with newly learned 
+				concepts I come across.
+				
+            </p>
+
+            <br>
+
+            <h3>Skills & Tools</h3>
+
+            <div class="skills">
+                <span class="skill">C++</span>
+                <span class="skill">C#</span>
+                <span class="skill">CMAKE</span>
+                <span class="skill">WPF</span>
+                <span class="skill">Unity</span>
+                <span class="skill">Unreal</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section id="projects">
+        <div class="container">
+
+            <h2>My Projects</h2>
+
+            <div class="projects">
+
+
+                <!-- =================================================
+                     PROJECT TEMPLATE
+
+                     COPY EVERYTHING FROM <article> TO </article>
+                     TO ADD ANOTHER PROJECT.
+                ================================================== -->
+
+                <article class="project">
+
+                    <!-- Change this image URL -->
+                    <img
+                        src="Images/WebGPU_Logo.jpg"
+                        alt="WebGPU logo"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>2D WebGPU Batch Renderer</h3>
+
+                        <p>
+                            My own 2D batch renderer made using SDL3 and WebGPU-native.
+							It also supports Dear ImGui, custom shaders, and simple post processing.
+                        </p>
+
+                        <div class="project-info">
+							<strong>My role:</strong> Programmer
+                            <br>
+                            <strong>Tools:</strong> C++, CMAKE
+                            <br>
+                            <strong>Year:</strong> 2026
+                        </div>
+
+                        <!-- Change # to your project link -->
+                        <a href="https://github.com/EatenMelon/2D_WebGPU_Batch_Renderer.git" target="_blank">
+                            View project →
+                        </a>
+
+                    </div>
+                </article>
+
+                <article class="project">
+
+                    <img
+                        src="Images/BoomsNBrooms_Logo.png"
+                        alt="Screenshot of another project"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>Booms n' Brooms</h3>
+
+                        <p>
+                            A game made as a submission for the Xbox Game Camp Belgium.
+							The game combines the olympic sport curling with mines,
+							in order to make a fun and chaotic racing game.
+                        </p>
+
+                        <div class="project-info">
+                            <strong>My role:</strong> Programmer
+                            <br>
+                            <strong>Tools:</strong> Unity, C#
+                            <br>
+                            <strong>Year:</strong> 2026
+                        </div>
+
+                        <a href="https://mathispfaff.itch.io/boomsnbrooms" target="_blank">
+                            View project →
+                        </a>
+
+                    </div>
+                </article>
+
+
+                <article class="project">
+
+                    <img
+                        src="Images/BurglinBirds_Logo.png"
+                        alt="Screenshot of another project"
+                    >
+
+                    <div class="project-content">
+
+                        <h3>Burglin' Birds</h3>
+
+                        <p>
+                            This game was created in the 4th semester at Howest Digital Arts 
+							and Entertainment for the course Game Projects.
+							Every week our amazing team members worked hard to bring this game to life. 
+							This project has truly been an amazing journey!
+                        </p>
+
+                        <div class="project-info">
+                            <strong>My role:</strong> Programmer
+                            <br>
+                            <strong>Tools:</strong> Unity, C#
+                            <br>
+                            <strong>Year:</strong> 2026
+                        </div>
+
+                        <a href="https://belgus.itch.io/burglinbirds" target="_blank">
+                            View project →
+                        </a>
+
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <h2>Contact</h2>
+			
+            <div>
+				<p>
+					ignace.dewulf@student.howest.com
+				</p>
+			</div>
+			
+			<div>
+				<p>
+					+32 0472 04 37 96
+				</p>
+			</div>
+			
+			<div>
+				<a href="https://www.linkedin.com/in/ignace-dewulf-017514400/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BXbd9Fu50RSiCw%2BQaiJcFsQ%3D%3D">
+					Linkedin
+				</a>
+			</div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        <p>© 2026 Ignace Dewulf</p>
+    </footer>
+
+</body>
+</html>
