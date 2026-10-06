@@ -1,418 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="arcade">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ignace Deuwlf | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ignace Dewulf | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Press+Start+2P&family=Space+Grotesk:wght@500;700&family=VT323&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+/* =====================================================
+   STYLES (THEMES)
+   Each theme is just a set of colours + fonts.
+   Change the values, or copy a block to make a 4th style
+   (then add a button for it in the header).
+===================================================== */
+:root[data-theme="arcade"] {
+  --bg: #14102b;  --panel: #201a45;  --line: #3b3178;
+  --text: #f1eeff; --muted: #a9a0d6;
+  --accent: #ff4fa3; --accent2: #35e0ff;
+  --radius: 4px;  --shadow: 6px 6px 0 var(--accent);
+  --font-display: "Press Start 2P", monospace;
+  --font-body: "DM Sans", Arial, sans-serif;
+  --body-size: 17px; --h-scale: .6;
+}
+:root[data-theme="studio"] {
+  --bg: #eef2f6;  --panel: #ffffff;  --line: #d3dbe4;
+  --text: #121a26; --muted: #5a6778;
+  --accent: #2f5bff; --accent2: #0b8f6a;
+  --radius: 14px; --shadow: 0 10px 30px rgba(18,26,38,.10);
+  --font-display: "Space Grotesk", Arial, sans-serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+  --body-size: 17px; --h-scale: 1;
+}
+:root[data-theme="handheld"] {
+  --bg: #9bbc0f;  --panel: #8bac0f;  --line: #306230;
+  --text: #0f380f; --muted: #306230;
+  --accent: #0f380f; --accent2: #306230;
+  --radius: 0; --shadow: 4px 4px 0 #306230;
+  --font-display: "Press Start 2P", monospace;
+  --font-body: "VT323", monospace;
+  --body-size: 23px; --h-scale: .6;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #222;
-            line-height: 1.6;
-        }
+/* =====================================================
+   BASE
+===================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6;
+}
+a { color: var(--accent2); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1000px; margin: auto; padding: 0 22px; }
+section { padding: 70px 0; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.3; }
+h2 { font-size: calc(2rem * var(--h-scale)); margin-bottom: 8px; }
+.section-note { color: var(--muted); margin-bottom: 30px; max-width: 560px; }
 
-        header {
-            background: #222;
-            color: white;
-            padding: 20px 0;
-        }
+/* =====================================================
+   HEADER + STYLE SWITCHER
+===================================================== */
+header { border-bottom: 2px solid var(--line); }
+nav { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; padding: 18px 22px; max-width: 1000px; margin: auto; }
+nav .brand { font-family: var(--font-display); font-size: calc(1.1rem * var(--h-scale) * 1.2); margin-right: auto; }
+nav a { color: var(--text); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+.styles { display: flex; gap: 6px; }
+.styles button {
+  font: inherit; font-size: .8em; cursor: pointer; color: var(--text);
+  background: transparent; border: 2px solid var(--line); border-radius: var(--radius); padding: 3px 10px;
+}
+.styles button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
-        nav {
-            max-width: 900px;
-            margin: auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* =====================================================
+   HERO
+===================================================== */
+.hero { padding: 100px 0 70px; }
+.hero h1 { font-size: clamp(1.5rem, 6vw, 3.2rem); margin-bottom: 22px; }
+.hero p { max-width: 560px; color: var(--muted); font-size: 1.15em; margin-bottom: 28px; }
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  background: var(--accent); color: var(--bg); padding: 10px 20px;
+  border-radius: var(--radius); box-shadow: var(--shadow); margin-right: 10px;
+}
+.btn.ghost { background: transparent; color: var(--text); border: 2px solid var(--line); box-shadow: none; }
+:root[data-theme="handheld"] .btn { color: var(--bg); }
 
-        nav h2 {
-            font-size: 20px;
-        }
+/* =====================================================
+   ABOUT + SKILLS
+===================================================== */
+.about p { max-width: 640px; color: var(--muted); }
+.skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.skill { border: 2px solid var(--line); border-radius: var(--radius); padding: 3px 14px; background: var(--panel); font-size: .9em; }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+/* =====================================================
+   CARDS (shared by projects and games)
+===================================================== */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.card {
+  background: var(--panel); border: 2px solid var(--line);
+  border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column;
+}
+.card:hover { box-shadow: var(--shadow); }
+.card img { width: 100%; height: 210px; object-fit: cover; display: block; background: var(--line); }
+.card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.card h3 { font-size: calc(1.1rem * var(--h-scale) * 1.3); margin-bottom: 10px; }
+.card p { color: var(--muted); margin-bottom: 14px; }
+.meta { font-size: .88em; margin-bottom: 14px; }
+.meta strong { color: var(--accent2); }
+.card a.link { margin-top: auto; font-weight: 700; text-decoration: none; color: var(--accent); }
+.card a.link:hover { text-decoration: underline; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.tag { font-size: .8em; border: 1px solid var(--accent2); color: var(--accent2); padding: 0 8px; border-radius: var(--radius); }
 
-        nav a:hover {
-            color: #7c5cff;
-        }
+/* Games I like: smaller, denser cards */
+.games { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 20px; }
+.game img { height: 270px; }               /* tall, like a game box */
+.game .card-body { padding: 14px; }
+.game h3 { font-size: calc(1rem * var(--h-scale) * 1.3); margin-bottom: 6px; }
+.game p { font-size: .92em; margin-bottom: 8px; }
+.game .platform { color: var(--accent2); font-size: .85em; margin-bottom: 6px; }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 0 20px;
-        }
+/* =====================================================
+   CONTACT + FOOTER
+===================================================== */
+.contact { border-top: 2px solid var(--line); }
+.contact p, .contact a { display: block; margin-bottom: 8px; }
+footer { border-top: 2px solid var(--line); text-align: center; padding: 22px; color: var(--muted); font-size: .9em; }
 
-        .hero {
-            padding: 90px 20px;
-            background: white;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .hero h1 span {
-            color: #7c5cff;
-        }
-
-        .hero p {
-            max-width: 650px;
-            color: #666;
-            font-size: 18px;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        section h2 {
-            font-size: 30px;
-            margin-bottom: 25px;
-        }
-
-        .about {
-            background: white;
-        }
-
-        .about p {
-            max-width: 700px;
-            color: #555;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .skill {
-            background: #eee;
-            padding: 7px 12px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .project {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .project img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 20px;
-        }
-
-        .project h3 {
-            margin-bottom: 8px;
-        }
-
-        .project p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .project-info {
-            font-size: 14px;
-            color: #777;
-        }
-
-        .project a {
-            display: inline-block;
-            margin-top: 15px;
-            color: #7c5cff;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .contact {
-            background: #222;
-            color: white;
-        }
-
-        .contact p {
-            color: #ccc;
-            margin-bottom: 15px;
-        }
-
-        .contact a {
-            color: #9b87ff;
-        }
-
-        footer {
-            background: #222;
-            border-top: 1px solid #444;
-            color: #999;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        @media (max-width: 650px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .projects {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                display: block;
-            }
-
-            nav div {
-                margin-top: 10px;
-            }
-
-            nav a {
-                margin-left: 0;
-                margin-right: 15px;
-            }
-        }
-    </style>
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 60px 0 40px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+<header>
+  <nav>
+    <span class="brand">Ignace Dewulf</span>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#games">Games I like</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <header>
-        <nav>
-            <h2>Ignace Dewulf</h2>
+<!-- ================= HERO ================= -->
+<div class="wrap hero">
+  <h1>Ignace Dewulf</h1>
+  <a class="btn" href="#projects">See my projects</a>
+  <a class="btn ghost" href="#contact">Get in touch</a>
+</div>
 
-            <div>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+<!-- ================= ABOUT ================= -->
+<section id="about" class="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <p>
+      Hello, I am Ignace Dewulf! I'm currently studying Digital Arts and Entertainment,
+      in the major Game Development at Howest. I love programming in C++, making and
+      designing systems mainly for games. In my free time, I also like to tinker and
+      toy around with newly learned concepts I come across.
+    </p>
+    <div class="skills">
+      <span class="skill">C++</span>
+      <span class="skill">C#</span>
+      <span class="skill">CMake</span>
+      <span class="skill">WPF</span>
+      <span class="skill">Unity</span>
+      <span class="skill">Unreal</span>
+      <!-- Add a skill: copy one <span> line -->
+    </div>
+  </div>
+</section>
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <h2>My projects</h2>
+    <p class="section-note">Things I built, alone or in a team.</p>
 
-    <section id="about" class="about">
-        <div class="container">
+    <div class="grid">
 
-            <h2>About Me</h2>
-
-            <p>
-                Hello, I am Ignace Dewulf! I'm currently studying Digital Arts and Entertainment,
-				in the major Game Development at Howest.
-				I love programming in C++, making and designing systems mainly for games. 
-				In my free time, I also like to tinker and toy around with newly learned 
-				concepts I come across.
-				
-            </p>
-
-            <br>
-
-            <h3>Skills & Tools</h3>
-
-            <div class="skills">
-                <span class="skill">C++</span>
-                <span class="skill">C#</span>
-                <span class="skill">CMAKE</span>
-                <span class="skill">WPF</span>
-                <span class="skill">Unity</span>
-                <span class="skill">Unreal</span>
-            </div>
-
+      <!-- ===============================================
+           PROJECT CARD: copy from <article> to </article>
+           and paste it below the last card.
+           Then change the image, text and link.
+      ================================================ -->
+      <article class="card">
+        <img src="Images/Projects/WebGPU_Logo.jpg" alt="WebGPU logo" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>2D WebGPU Batch Renderer</h3>
+          <p>My own 2D batch renderer made using SDL3 and WebGPU-native. It also supports Dear ImGui, custom shaders, and simple post processing.</p>
+          <div class="meta">
+            <strong>Role:</strong> Programmer<br>
+            <strong>Tools:</strong> C++, CMake<br>
+            <strong>Year:</strong> 2026
+          </div>
+          <a class="link" href="https://github.com/EatenMelon/2D_WebGPU_Batch_Renderer.git" target="_blank" rel="noopener">View project</a>
         </div>
-    </section>
+      </article>
 
-
-    <!-- =========================
-         PROJECTS
-    ========================== -->
-
-    <section id="projects">
-        <div class="container">
-
-            <h2>My Projects</h2>
-
-            <div class="projects">
-
-
-                <!-- =================================================
-                     PROJECT TEMPLATE
-
-                     COPY EVERYTHING FROM <article> TO </article>
-                     TO ADD ANOTHER PROJECT.
-                ================================================== -->
-
-                <article class="project">
-
-                    <!-- Change this image URL -->
-                    <img
-                        src="Images/WebGPU_Logo.jpg"
-                        alt="WebGPU logo"
-                    >
-
-                    <div class="project-content">
-
-                        <h3>2D WebGPU Batch Renderer</h3>
-
-                        <p>
-                            My own 2D batch renderer made using SDL3 and WebGPU-native.
-							It also supports Dear ImGui, custom shaders, and simple post processing.
-                        </p>
-
-                        <div class="project-info">
-							<strong>My role:</strong> Programmer
-                            <br>
-                            <strong>Tools:</strong> C++, CMAKE
-                            <br>
-                            <strong>Year:</strong> 2026
-                        </div>
-
-                        <!-- Change # to your project link -->
-                        <a href="https://github.com/EatenMelon/2D_WebGPU_Batch_Renderer.git" target="_blank">
-                            View project →
-                        </a>
-
-                    </div>
-                </article>
-
-                <article class="project">
-
-                    <img
-                        src="Images/BoomsNBrooms_Logo.png"
-                        alt="Screenshot of another project"
-                    >
-
-                    <div class="project-content">
-
-                        <h3>Booms n' Brooms</h3>
-
-                        <p>
-                            A game made as a submission for the Xbox Game Camp Belgium.
-							The game combines the olympic sport curling with mines,
-							in order to make a fun and chaotic racing game.
-                        </p>
-
-                        <div class="project-info">
-                            <strong>My role:</strong> Programmer
-                            <br>
-                            <strong>Tools:</strong> Unity, C#
-                            <br>
-                            <strong>Year:</strong> 2026
-                        </div>
-
-                        <a href="https://mathispfaff.itch.io/boomsnbrooms" target="_blank">
-                            View project →
-                        </a>
-
-                    </div>
-                </article>
-
-
-                <article class="project">
-
-                    <img
-                        src="Images/BurglinBirds_Logo.png"
-                        alt="Screenshot of another project"
-                    >
-
-                    <div class="project-content">
-
-                        <h3>Burglin' Birds</h3>
-
-                        <p>
-                            This game was created in the 4th semester at Howest Digital Arts 
-							and Entertainment for the course Game Projects.
-							Every week our amazing team members worked hard to bring this game to life. 
-							This project has truly been an amazing journey!
-                        </p>
-
-                        <div class="project-info">
-                            <strong>My role:</strong> Programmer
-                            <br>
-                            <strong>Tools:</strong> Unity, C#
-                            <br>
-                            <strong>Year:</strong> 2026
-                        </div>
-
-                        <a href="https://belgus.itch.io/burglinbirds" target="_blank">
-                            View project →
-                        </a>
-
-                    </div>
-                </article>
-
-            </div>
+      <article class="card">
+        <img src="Images/Projects/BoomsNBrooms_Logo.png" alt="Booms n' Brooms logo" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>Booms n' Brooms</h3>
+          <p>A game made as a submission for the Xbox Game Camp Belgium. It combines the olympic sport curling with mines, to make a fun and chaotic racing game.</p>
+          <div class="meta">
+            <strong>Role:</strong> Programmer<br>
+            <strong>Tools:</strong> Unity, C#<br>
+            <strong>Year:</strong> 2026
+          </div>
+          <a class="link" href="https://mathispfaff.itch.io/boomsnbrooms" target="_blank" rel="noopener">View project</a>
         </div>
-    </section>
+      </article>
 
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <h2>Contact</h2>
-			
-            <div>
-				<p>
-					ignace.dewulf@student.howest.com
-				</p>
-			</div>
-			
-			<div>
-				<p>
-					+32 0472 04 37 96
-				</p>
-			</div>
-			
-			<div>
-				<a href="https://www.linkedin.com/in/ignace-dewulf-017514400/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BXbd9Fu50RSiCw%2BQaiJcFsQ%3D%3D">
-					Linkedin
-				</a>
-			</div>
-
+      <article class="card">
+        <img src="Images/Projects/BurglinBirds_Logo.png" alt="Burglin' Birds logo" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>Burglin' Birds</h3>
+          <p>Created in the 4th semester at Howest Digital Arts and Entertainment for the course Game Projects. Every week our team worked hard to bring this game to life.</p>
+          <div class="meta">
+            <strong>Role:</strong> Programmer<br>
+            <strong>Tools:</strong> Unity, C#<br>
+            <strong>Year:</strong> 2026
+          </div>
+          <a class="link" href="https://belgus.itch.io/burglinbirds" target="_blank" rel="noopener">View project</a>
         </div>
-    </section>
+      </article>
 
+    </div>
+  </div>
+</section>
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+<!-- ================= GAMES I LIKE ================= -->
+<section id="games">
+  <div class="wrap">
+    <h2>Games I like</h2>
+    <p class="section-note">
+		Below are some games that I still think about from time to time.
+		I love games that let you interact with the environment for more than just the core gameplay.
+	</p>
 
-    <footer>
-        <p>© 2026 Ignace Dewulf</p>
-    </footer>
+    <div class="games">
+
+      <!-- ===============================================
+           GAME CARD: copy from <article> to </article>
+           and paste it below the last card.
+           Replace the image with a cover (e.g. Images/Games/hades.jpg),
+           then fill in the title, platform and why you like it.
+      ================================================ -->
+      <article class="card game">
+        <img src="Images/Games/Ori.jpg" alt="Cover of Example Game" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>Ori and the Will of the Wisps</h3>
+          <div class="platform">PC, Xbox, Nintendo Switch</div>
+          <p>
+			I love this game because it feels so alive, since its full of 
+			small interaction with the environment. I also liked the story a lot.
+		  </p>
+          <div class="tags">
+			<span class="tag">Beatiful</span>
+			<span class="tag">Metroidvania</span>
+			<span class="tag">Platformer</span>
+			<span class="tag">Great Soundtrack</span>
+			<span class="tag">2D</span>
+		  </div>
+        </div>
+      </article>
+	  
+	  <article class="card game">
+        <img src="Images/Games/Sheepy.webp" alt="Cover of Example Game" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>Sheepy: A Short Adventure</h3>
+          <div class="platform">PC, Nintendo Switch</div>
+          <p>
+			I played this game a couple times, I liked how simple and effective it was.
+			Small interactions, a small world to explore and interactions with its environment.
+		  </p>
+          <div class="tags">
+			<span class="tag">Free To Play</span>
+			<span class="tag">Pixel Graphics</span>
+			<span class="tag">2D Platformer</span>
+			<span class="tag">Indie</span>
+			<span class="tag">Casual</span>
+		  </div>
+        </div>
+      </article>
+	  
+	  <article class="card game">
+        <img src="Images/Games/LittleNightmares2.jpg" alt="Cover of Example Game" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>Little Nightmares II</h3>
+          <div class="platform">PC, Xbox, Nintendo Switch, Playstation</div>
+          <p>
+			I loved the puzzels in this game. Some achievements in you could 
+			unlock and secrets you could find really made this game feel alive.
+		  </p>
+          <div class="tags">
+			<span class="tag">Horror</span>
+			<span class="tag">Adventure</span>
+			<span class="tag">Singleplayer</span>
+			<span class="tag">Puzzle</span>
+			<span class="tag">Dark</span>
+			<span class="tag">Stealth</span>
+		  </div>
+        </div>
+      </article>
+	  
+	  <article class="card game">
+        <img src="Images/Games/Eldenring.jpg" alt="Cover of Example Game" onerror="this.style.display='none'">
+        <div class="card-body">
+          <h3>Elden ring</h3>
+          <div class="platform">PC, Xbox, Nintendo Switch 2, Playstation</div>
+          <p>
+			I loved the variety in quests, some are really fun to follow along.
+			I never beat it though since I'm not good at souls likes, but I still try from time to time.
+		  </p>
+          <div class="tags">
+			<span class="tag">Souls-Like</span>
+			<span class="tag">Adventure</span>
+			<span class="tag">Dark Fantasy</span>
+			<span class="tag">RPG</span>
+			<span class="tag">Difficult</span>
+		  </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>ignace.dewulf@student.howest.com</p>
+    <p>+32 0472 04 37 96</p>
+    <a href="https://www.linkedin.com/in/ignace-dewulf-017514400/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<footer>© 2026 Ignace Dewulf</footer>
 
 </body>
 </html>
