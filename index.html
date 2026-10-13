@@ -116,6 +116,16 @@ nav a:hover { color: var(--accent); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 .tag { font-size: .8em; border: 1px solid var(--accent2); color: var(--accent2); padding: 0 8px; border-radius: var(--radius); }
 
+/* Tinkering: lighter, denser cards for small experiments */
+.tinker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.tinker { border-style: dashed; }
+.tinker img { height: 150px; }
+.tinker .card-body { padding: 16px; }
+.tinker h3 { font-size: calc(1rem * var(--h-scale) * 1.3); margin-bottom: 8px; }
+.tinker p { font-size: .95em; margin-bottom: 10px; }
+.tinker .learned { color: var(--text); font-size: .9em; }
+.tinker .learned strong { color: var(--accent2); }
+
 /* Games I like: smaller, denser cards */
 .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 20px; }
 .game img { height: 270px; }               /* tall, like a game box */
@@ -146,7 +156,7 @@ footer { border-top: 2px solid var(--line); text-align: center; padding: 22px; c
     <span class="brand">Ignace Dewulf</span>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
-    <a href="#games">Games I like</a>
+    <a href="#tinkering">Tinkering</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -184,7 +194,9 @@ footer { border-top: 2px solid var(--line); text-align: center; padding: 22px; c
 <section id="projects">
   <div class="wrap">
     <h2>My projects</h2>
-    <p class="section-note">Things I built, alone or in a team.</p>
+    <p class="section-note">
+		These are projects I built myself or in a team.
+	</p>
 
     <div class="grid">
 
@@ -245,71 +257,82 @@ footer { border-top: 2px solid var(--line); text-align: center; padding: 22px; c
   </div>
 </section>
 
-<!-- ================= GAMES I LIKE =================
-<section id="games">
+<!-- ================= TINKERING ================= -->
+<section id="tinkering">
   <div class="wrap">
-    <h2>Games I like</h2>
+    <h2>Tinkering</h2>
     <p class="section-note">
-		Below are some games that I still think about from time to time.
-		I love games that let you interact with the environment for more than just the core gameplay.
-	</p>
+      Most of the time when I code in my free-time, its mostly tinkering and messing around with newly discovered concepts.
+	  Below are some examples.
+    </p>
 
-    <div class="games">
+    <div class="tinker-grid">
 
       <!-- ===============================================
-           GAME CARD: copy from <article> to </article>
+           TINKERING CARD: copy from <article> to </article>
            and paste it below the last card.
-           Replace the image with a cover (e.g. Images/Games/hades.jpg),
-           then fill in the title, platform and why you like it.
-      ================================================
-      <article class="card game">
-        <img src="Images/Games/Minecraft.jpeg" alt="Cover of Example Game" onerror="this.style.display='none'">
+           - Image is optional: delete the <img> line if you have none
+             (a GIF or screenshot works great).
+           - Add or remove <span class="tag"> lines as needed.
+           - Delete the "Learned" line if you don't want it.
+      ================================================ -->
+	  
+	  <article class="card tinker">
+        <img src="Gifs/Tinkering/MyLanguage.gif" alt="Interpreted language tinkering" onerror="this.style.display='none'">
         <div class="card-body">
-          <h3>Minecraft</h3>
+          <h3>Own Interpreter</h3>
           <p>
-			Minecraft is really the reason I got into programming. The command blocks let me
-			do so much fun thinks, which made sparked my curiousity on how games work and what programming really is.
+			I made a simple interpreter, with some basic functions, scopes, and a repeat loop. 
+			I could pass a string or a file, and then execute the script whenever I wanted.
+			The syntax was hardcoded, so it wasn't easily expandable and got really messy code wise.
 		  </p>
+          <p class="learned"><strong>Learned: </strong>Interpreted languages are hard to make.</p>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">CMake</span>
+          </div>
+          <!--a class="link" href="https://github.com/EatenMelon/" target="_blank" rel="noopener">View source</a-->
         </div>
       </article>
 	  
-	  <article class="card game">
-        <img src="Images/Games/Ori.jpg" alt="Cover of Example Game" onerror="this.style.display='none'">
+	  <article class="card tinker">
+        <img src="Gifs/Tinkering/WavesFFT.gif" alt="FFT wave tinkering" onerror="this.style.display='none'">
         <div class="card-body">
-          <h3>Ori and the Will of the Wisps</h3>
+          <h3>FFT Waves</h3>
           <p>
-			I liked all the fun effects in this game, especially the interactions with the water.
-			I also liked how they slow down time when dashing though enemies.
+			I wanted to replicate the interactive water I saw in some games like 'Ori: And The Will Of The Wisps'.
+			So I found 2 turoials one on making an FFT algorithm and one on using FFT for creating a wave effect.
+			I translated the code to C++ and use my own batch renderer to render the waves, so I could test both.
 		  </p>
+          <p class="learned"><strong>Learned: </strong>About FFT (Fast Fourier Transform).</p>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">CMake</span>
+          </div>
+          <!--a class="link" href="https://github.com/EatenMelon/" target="_blank" rel="noopener">View source</a-->
         </div>
       </article>
 	  
-	  <article class="card game">
-        <img src="Images/Games/Sheepy.webp" alt="Cover of Example Game" onerror="this.style.display='none'">
+      <article class="card tinker">
+        <img src="Gifs/Tinkering/SDL.gif" alt="SDL tinkering" onerror="this.style.display='none'">
         <div class="card-body">
-          <h3>Sheepy: A Short Adventure</h3>
+          <h3>Exploring SDL</h3>
           <p>
-			Sheepy was simple and cozy, I just liked how smoothly you pull levers or climb ledges.
-			This game also showed me how fun 2D pixel art games can be.
+			I made this after my first year in DAE I think, to make my own version of the Prog2 'engine', which was just a toypainter.
+			The video above is a sort video I shared with my friends, to show off how I could draw the silhouette of textures in any color.
 		  </p>
-        </div>
-      </article>
-	  
-	  <article class="card game">
-        <img src="Images/Games/LittleNightmares2.jpg" alt="Cover of Example Game" onerror="this.style.display='none'">
-        <div class="card-body">
-          <h3>Little Nightmares II</h3>
-          <p>
-			I loved the puzzels in this game. I also was impressed with the companion that helps you out,
-			following the games story, helping you out and wandering around when it has nothing to do, 
-			all without getting in the way of the player.
-		  </p>
+          <p class="learned"><strong>Learned: </strong>How to use SDL and how to NOT structure my CMake projects.</p>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">CMake</span>
+          </div>
+          <!--a class="link" href="https://github.com/EatenMelon/" target="_blank" rel="noopener">View source</a-->
         </div>
       </article>
 
     </div>
   </div>
-</section>-->
+</section>
 
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="contact">
